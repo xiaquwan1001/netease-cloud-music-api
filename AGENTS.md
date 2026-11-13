@@ -2,7 +2,7 @@
 
 ## Project
 
-Rust library crate implementing the Netease Cloud Music API. v1.5.2, GPLv3.
+Rust library crate implementing the Netease Cloud Music API. v2.2.2（以 `Cargo.toml` 为准）, GPLv3.
 
 ## Structure
 
@@ -16,7 +16,7 @@ Library crate only — no binary, no `main.rs`.
 
 ```sh
 cargo build
-cargo test        # 2 tests, both use async-std runtime
+cargo test        # 测试统一用 async-std 运行时；2026-11-11 基线 = 13 passed / 1 ignored（旧「2 tests」是未含穿戴端用例的基线）
 ```
 
 All public API methods are marked `#[allow(unused)]` — intentional for library consumption.
@@ -42,5 +42,5 @@ All public API methods are marked `#[allow(unused)]` — intentional for library
 - 穿戴端登录已落地并合入：`MusicApi::captcha_wearable` / `login_cellphone_wearable`，走 eapi 可绕过 PC 端 -462 风控。
 - 协议/加解密/风控只用 `Crypto`/`MusicApi` 现有实现，不自行重写加密或签名。
 - 错误文案透传走 `model::api_error`；`to_captcha` 对 `code=200 但 data=false` 判失败。
-- 细节见 `.pi/memory/notes-api.md`（本仓）与 `~/netease-cloud-music-gtk/.pi/memory/`。
+- 细节见 `.pi/memory/MEMORY.md`（本仓；2026-11-13 已并入 notes-api.md）与 `~/netease-cloud-music-gtk/.pi/memory/MEMORY.md`（主记忆）。
 
