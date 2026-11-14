@@ -1,2 +1,5 @@
 /target
 /Cargo.lock
+
+# fabric 运行态缓存（会话拓扑，机器相关）
+.pi/fabric/
