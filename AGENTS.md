@@ -3,6 +3,7 @@
 ## Project
 
 Rust library crate implementing the Netease Cloud Music API. v2.2.2（以 `Cargo.toml` 为准）, GPLv3.
+本地路径 `~/netease-cloud-music-api`，上游 `gmg137/netease-cloud-music-api`（`netease-cloud-music-gtk` 的 API 库）。
 
 ## Structure
 
@@ -34,13 +35,12 @@ All public API methods are marked `#[allow(unused)]` — intentional for library
 
 - `CryptoApi` variants: `Weapi` (default), `LinuxApi`, `Eapi` — selected per-request
 - `Parse` enum controls JSON response parsing strategy (Usl, Ucd, Rmd, Rmds, Search, etc.)
-- `#[allow(unused)]` on public API methods is by design
 - `.gitignore` excludes `/target` and `/Cargo.lock`
 
 ## 项目记忆（2026-11-11 整理）
 
-- 穿戴端登录已落地并合入：`MusicApi::captcha_wearable` / `login_cellphone_wearable`，走 eapi 可绕过 PC 端 -462 风控。
 - 协议/加解密/风控只用 `Crypto`/`MusicApi` 现有实现，不自行重写加密或签名。
 - 错误文案透传走 `model::api_error`；`to_captcha` 对 `code=200 但 data=false` 判失败。
-- 细节见 `.pi/memory/MEMORY.md`（本仓；2026-11-13 已并入 notes-api.md）与 `~/netease-cloud-music-gtk/.pi/memory/MEMORY.md`（主记忆）。
+- 穿戴端登录已合入上游（2026-11-03，merge `bcf36ff`；上游未出新 tag，最新仍 2.2.2）：`captcha_wearable` / `login_cellphone_wearable` 走 eapi 可绕过 PC 端 -462 风控。
+- 细节见本仓 `.pi/memory/MEMORY.md` 与 `~/netease-cloud-music-gtk/.pi/memory/MEMORY.md`（主记忆：登录风控/易盾/eapi 协议/出口限流/PR 状态）。
 
