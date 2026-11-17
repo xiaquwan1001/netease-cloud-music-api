@@ -43,6 +43,3 @@ All public API methods are marked `#[allow(unused)]` — intentional for library
 - 错误文案透传走 `model::api_error`；`to_captcha` 对 `code=200 但 data=false` 判失败。
 - 穿戴端登录已合入上游（2026-11-03，merge `bcf36ff`；上游未出新 tag，最新仍 2.2.2）：`captcha_wearable` / `login_cellphone_wearable` 走 eapi 可绕过 PC 端 -462 风控。
 - 细节见本仓 `.pi/memory/MEMORY.md` 与 `~/netease-cloud-music-gtk/.pi/memory/MEMORY.md`（主记忆：登录风控/易盾/eapi 协议/出口限流/PR 状态）。
-
-
-- 硬件稳定性（随机 SEGV/ICE、编译产物损坏、页缓存/位翻转）：工具与判据全在 `~/hw-stability`（入口 `~/hw-stability/AGENTS.md`，技能 `hw-stability-tools`）；本项目只按全局 AGENTS 硬性规则 12 上交证据到 `~/hw-stability/evidence/inbox/`，不在此复述。
