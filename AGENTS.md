@@ -42,4 +42,4 @@ All public API methods are marked `#[allow(unused)]` — intentional for library
 - 协议/加解密/风控只用 `Crypto`/`MusicApi` 现有实现，不自行重写加密或签名。
 - 错误文案透传走 `model::api_error`；`to_captcha` 对 `code=200 但 data=false` 判失败。
 - 穿戴端登录已合入上游（2026-11-03，merge `bcf36ff`；上游未出新 tag，最新仍 2.2.2）：`captcha_wearable` / `login_cellphone_wearable` 走 eapi 可绕过 PC 端 -462 风控。
-- 细节见本仓 `.pi/memory/MEMORY.md` 与 `~/netease-cloud-music-gtk/.pi/memory/MEMORY.md`（主记忆：登录风控/易盾/eapi 协议/出口限流/PR 状态）。
+- 细节见本仓 `.pi/memory/MEMORY.md`（登录风控/易盾/eapi 协议/出口限流/PR 状态）。客户端仓 `netease-cloud-music-gtk` 已不在本机盘（2026-11-25 核实，`projects-memory` 里的软链随之删除），需要客户端侧事实用 `sessfind netease-cloud-music-gtk` 从历史会话回查。
